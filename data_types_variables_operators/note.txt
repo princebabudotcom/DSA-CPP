@@ -1,0 +1,43 @@
+Data Types 
+
+1 -> Bit 
+8 Bytes -> 1 Bit
+
+1. int  ->  4 Bytes
+2. char -> store single character -> 1 Byte
+3. float -> store floating values -> 4 Bytes
+4. bool -> store true and false -> 1 Byte
+5. double -> 
+
+----------------|
+2. TYPE CASTING |
+----------------|
+
+conversion -> implicit
+conversion -> 
+
+
+----------------|
+3. Input in C++ |
+----------------|
+
+cin >> 
+
+
+----------------|
+4. Operators    |
+----------------|
+
+int/int => int -> ignore floating value 
+double\int || int/double
+
+
+* Arithmetic => +-*/
+* Relational => == , != , < > >= <= 
+* logical => || && !
+* Unary Operators 
+    * Increment ++
+    * Decrement --
+
+    
+
