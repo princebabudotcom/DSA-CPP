@@ -1,0 +1,13 @@
+# conditional statement 
+
+1. if
+2. if else 
+3. else if 
+
+
+
+# note 
+
+char = M 
+M >= 65 -> Implict conversion
+m >= 97 -> 
