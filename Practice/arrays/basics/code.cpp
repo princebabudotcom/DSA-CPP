@@ -72,6 +72,30 @@ int uniqueElem(int arr[], int size)
     return ans;
 }
 
+int uniqueElem2(int arr[], int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << count << endl;
+        for (int j = 0; j < size; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                count++;
+            }
+        }
+
+        if (count == 1)
+        {
+            return arr[i];
+        }
+    }
+
+    return -1;
+}
+
 int main()
 {
 
@@ -92,14 +116,18 @@ int main()
     size = sizeof(arr2) / sizeof(int);
     cout << "Array Unique Element : " << uniqueElem(arr2, size) << endl;
 
-    for (int i = 0; i < 10; i++)
-    {
-        for (int j = 0; j < 10; j++)
-        {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     for (int j = 0; j < 10; j++)
+    //     {
+    //         cout << j << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    // unique element using nested loop
+
+    cout << "Unique Element : " << uniqueElem2(arr2, size);
 
     return 0;
 }
