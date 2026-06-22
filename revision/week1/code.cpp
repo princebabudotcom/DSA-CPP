@@ -114,6 +114,50 @@ int Xn(double x, int n)
     return ans;
 }
 
+vector<int> pairSum(vector<int> &nums, int target)
+{
+    int n = nums.size();
+    vector<int> ans;
+
+    // for (int i = 0; i < n; i++)
+    // {
+
+    //     for (int j = i + 1; j < n; j++)
+    //     {
+    //         int currentSum = nums[i] + nums[j];
+    //         if (currentSum == target)
+    //         {
+    //             ans.push_back(nums[i]);
+    //             ans.push_back(nums[j]);
+    //         }
+    //     }
+    // }
+
+    int i = 0, j = n - 1;
+
+    while (i < j)
+    {
+        int currentSum = nums[i] + nums[j];
+
+        if (currentSum > target)
+        {
+            j--;
+        }
+        else if (currentSum < target)
+        {
+            i++;
+        }
+        else
+        {
+            ans.push_back(nums[i]);
+            ans.push_back(nums[j]);
+            break;
+        }
+    }
+
+    return ans;
+}
+
 int main()
 {
 
@@ -127,6 +171,11 @@ int main()
 
     // Compute X^n
     cout << "X^n : " << Xn(-5, 3) << endl;
+
+    // Pair sum
+    vector<int> pairs = {2, 7, 11, 15};
+    vector<int> result = pairSum(pairs, 13);
+    cout << result[0] << "+" << result[1] << " = " << result[0] + result[1] << endl;
 
     return 0;
 }
