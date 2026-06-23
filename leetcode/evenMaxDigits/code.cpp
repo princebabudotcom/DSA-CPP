@@ -35,12 +35,10 @@ int main()
 {
 
     vector<int> nums = {12, 345, 2, 6, 7896};
-    int n = nums.size();
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << nums[nums[i]] << endl;
-    }
+    string s = to_string(nums[2]);
+
+    cout << evenMaxDigits(nums) << " " << s.size();
 
     return 0;
 }
