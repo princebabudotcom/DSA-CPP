@@ -75,15 +75,57 @@ int GCD(int a, int b)
 {
     int gcd = 1;
 
-    for (int i = 1; i <= min(a, b); i++)
+    // brute force
+    // for (int i = 1; i <= min(a, b); i++)
+    // {
+    //     if (a % i == 0 && b % i == 0)
+    //     {
+    //         gcd = i;
+    //     }
+    // }
+
+    while (a > 0 && b > 0)
     {
-        if (a % i == 0 && b % i == 0)
-        {
-            gcd = i;
-        }
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
     }
 
-    return gcd;
+    if (a == 0)
+    {
+        return b;
+    }
+    else
+    {
+        return a;
+    }
+}
+
+int lcm(int a, int b)
+{
+    int gcd = GCD(a, b);
+    return (a * b) / gcd;
+}
+
+int reverseNumber(int num)
+{
+
+    int revNum = 0;
+
+    while (num > 0)
+    {
+        int dig = num % 10;
+
+        if (revNum > INT32_MAX / 10 || revNum > INT32_MIN)
+        {
+            return 0;
+        }
+        revNum = (revNum * 10) + dig;
+        num /= 10;
+    }
+
+    return revNum;
 }
 
 int main()
@@ -100,7 +142,9 @@ int main()
 
     cout << isArmstrong(153) << endl;
 
-    cout << GCD(20, 28) << endl;
+    cout << "GCD of a number = " << GCD(20, 28) << endl;
+    cout << "LCM of a number = " << lcm(20, 28) << endl;
+    cout << "Reverse a number = " << reverseNumber(123);
 
     return 0;
 }
