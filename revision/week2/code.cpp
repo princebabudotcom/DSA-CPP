@@ -12,6 +12,12 @@ Today's Revision (15)
  * 2.  Single Number  LC-136
  * 3.  Stock buy and sell LC-121
  * 4.  Pow (x^n)    LC-50
+ * 5. Maximum sub Array LC-53
+ * 6. Container with most water LC-11
+ * -----------------
+ * | Binary Search |
+ * ----------------
+ * 7. Peak index in mountain Array LC-852
  */
 
 int majorityElement(vector<int> &nums)
@@ -142,6 +148,105 @@ int PX(double x, int n)
     return ans;
 }
 
+int maxSubArray(vector<int> &nums)
+{
+
+    int n = nums.size();
+    int maxSum = INT8_MIN;
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     int currentSum = 0;
+    //     for (int j = i; j < n; j++)
+    //     {
+    //         currentSum += nums[j];
+    //         maxSum = max(maxSum, currentSum);
+    //     }
+    // }
+
+    // using kadane's algorithm
+
+    int currentSum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        currentSum += nums[i];
+        maxSum = max(maxSum, currentSum);
+
+        if (currentSum < 0)
+        {
+            currentSum = 0;
+        }
+    }
+
+    return maxSum;
+}
+
+int maxWater(vector<int> &nums)
+{
+
+    int maxWater = 0;
+
+    int n = nums.size();
+
+    // Brute force
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     int currentWater = 0;
+
+    //     for (int j = 1; j < n; j++)
+    //     {
+    //         int h = min(nums[i], nums[j]);
+    //         int w = j - i;
+    //         currentWater = w * h;
+    //         maxWater = max(currentWater, maxWater);
+    //     }
+    // }
+
+    // Optimal solution
+
+    int st = 0, end = n - 1;
+
+    while (st < end)
+    {
+        int h = min(nums[st], nums[end]);
+        int w = end - st;
+        int area = h * w;
+        maxWater = max(maxWater, area);
+
+        nums[st] < nums[end] ? st++ : end--;
+    }
+
+    return maxWater;
+}
+
+int peakIndexInMountainArray(vector<int> &nums)
+{
+
+    int n = nums.size();
+
+    int st = 0, end = n - 1;
+
+    while (st < end)
+    {
+        int mid = st + (end - st) / 2;
+
+        if (nums[mid - 1]<nums[mid]> nums[mid + 1])
+        {
+            return mid;
+        }
+
+        if (nums[mid - 1] < nums[mid])
+        {
+            st = mid + 1;
+        }
+        else
+        {
+            end = mid - 1;
+        }
+    }
+}
+
 int main()
 {
 
@@ -160,6 +265,21 @@ int main()
 
     // P^x
     cout << "P^x : " << PX(-2, 3) << endl;
+
+    // Max sub array
+    vector<int> subArray = {5, 4, -1, 7, 8};
+    cout << "Max sub array : " << maxSubArray(subArray) << endl;
+
+    // conatiner with most water
+    vector<int> heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    cout << "Container with most water : " << maxWater(heights) << endl;
+
+    // Binary Search
+
+    // 7. peakIndexElement
+
+    vector<int> peakIndexs = {0, 1, 0};
+    cout << "Peak index value : " << peakIndexInMountainArray(peakIndexs);
 
     return 0;
 }

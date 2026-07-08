@@ -117,7 +117,7 @@ int reverseNumber(int num)
     {
         int dig = num % 10;
 
-        if (revNum > INT32_MAX / 10 || revNum > INT32_MIN)
+        if (revNum > INT32_MAX / 10 || revNum < INT32_MIN)
         {
             return 0;
         }
@@ -126,6 +126,32 @@ int reverseNumber(int num)
     }
 
     return revNum;
+}
+
+vector<int> twoSum(vector<int> &nums, int target)
+{
+
+    int n = nums.size();
+    vector<int> ans;
+
+    int st = 0, end = n - 1;
+
+    while (st < end)
+    {
+        int mid = st + (end - st) / 2;
+        int currSum = nums[st] + nums[end];
+
+        if (currSum == target)
+        {
+            ans.push_back(st);
+            ans.push_back(end);
+            return ans;
+        }
+
+        currSum < target ? st++ : end--;
+    }
+
+    return ans;
 }
 
 int main()
@@ -144,7 +170,15 @@ int main()
 
     cout << "GCD of a number = " << GCD(20, 28) << endl;
     cout << "LCM of a number = " << lcm(20, 28) << endl;
-    cout << "Reverse a number = " << reverseNumber(123);
+    cout << "Reverse a number = " << reverseNumber(123) << endl;
+
+    vector<int> twoSums = {3, 3};
+    vector<int> res = twoSum(twoSums, 6);
+
+    for (int val : res)
+    {
+        cout << val << " ";
+    }
 
     return 0;
 }

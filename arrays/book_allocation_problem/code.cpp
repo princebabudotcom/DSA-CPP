@@ -2,14 +2,11 @@
 #include <vector>
 using namespace std;
 
-int evenMaxDigits(vector<int> &nums)
-{
-}
-
 int main()
 {
 
-    // peak element in array
+    vector<int> pages = {2, 1, 3, 4};
+    int M = 2;
 
     return 0;
 }
