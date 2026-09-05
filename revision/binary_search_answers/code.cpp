@@ -66,14 +66,49 @@ int bookAllocation(vector<int> &nums, int n, int m)
     return ans;
 }
 
-int main()
+int painterPartation(vector<int> &nums, int n, int m)
 {
 
+    // min and maximu time to complete work
+    int minT = nums[0];
+    int maxT = 0;
+    int ans = -1;
+
+    for (int i = 0; i < n; i++)
+    {
+        minT = min(minT, nums[i]);
+        maxT += nums[i];
+    }
+
+    // binary search
+    int st = minT, end = maxT;
+
+    while (st <= end)
+    {
+        int mid = st + (end - st) / 2;
+
+        if (isValid(nums, n, m, mid))
+        {
+            ans = mid;
+            end = mid - 1;
+        }
+        else
+        {
+            st = mid + 1;
+        }
+    }
+
+    return ans;
+}
+
+int main()
+{
     cout << "hello world\n";
 
     // book allocation problem
     vector<int> pages = {2, 1, 3, 4};
-    cout << bookAllocation(pages, 4, 2);
-
+    vector<int> paints = {40, 30, 10, 20};
+    cout << "Book Allocation problem : " << bookAllocation(pages, 4, 2) << endl;
+    cout << "Painter partation problem : " << painterPartation(paints, 4, 2) << endl;
     return 0;
 }
