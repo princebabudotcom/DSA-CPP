@@ -22,6 +22,25 @@ Answer = 2
 */
 int majorityElement(vector<int> &nums)
 {
+    int n = nums.size();
+    // vector<int> nums;
+    int freq = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (nums[i] == nums[j])
+            {
+                freq++;
+            }
+        }
+
+        if (n / 2 < freq)
+        {
+            return nums[i];
+        }
+    }
 }
 
 // 2. Single Number
@@ -326,6 +345,8 @@ int main()
         2, 2, 1, 1, 1, 2, 2};
 
     // majorityElement(majorityNums);
+
+    cout << majorityElement(majorityNums);
 
     // =====================================================
     // 2. Single Number
