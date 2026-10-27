@@ -1,47 +1,30 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <cctype>
 using namespace std;
 
-/*
- * -------------------
- * | valid palindrome |
- * --------------------
- */
-
-bool isAlpahaNumeric(char ch)
+bool isValidPalimdrom(string s)
 {
-    if ((ch >= '0' && ch <= '9') || (tolower(ch) >= 'a' && tolower(ch) <= 'z'))
+    int st = 0, end = s.size() - 1;
+
+    while (st <= end)
     {
-        return true;
-    }
-
-    false;
-}
-
-bool isPalindrome(string s)
-{
-
-    int n = s.size();
-
-    int st = 0, end = n - 1;
-    while (st < end)
-    {
-        if (!isAlpahaNumeric(s[st]))
+        if (!isalnum(s[st]))
         {
             st++;
             continue;
         }
 
-        if (!isAlpahaNumeric(s[end]))
+        if (!isalnum(s[end]))
         {
             end--;
             continue;
         }
 
-        if (tolower(s[st]) != tolower(s[end]))
+        if (tolower(s[st] != tolower(s[end])))
+        {
             return false;
-
+        }
         st++;
         end--;
     }
@@ -51,22 +34,23 @@ bool isPalindrome(string s)
 
 string removeOccurrences(string s, string part)
 {
-    while (s.find(part) <= s.length() && s.find(part) < s.length())
+    while (s.length() > 0 && s.find(part) < s.length())
     {
         s.erase(s.find(part), part.length());
     }
 
     return s;
 }
-
 int main()
 {
 
-    string s;
-    cout << "Enter a string : ";
-    getline(cin, s);
+    string s = "madam";
 
-    cout << isPalindrome(s) << endl;
+    cout << isValidPalimdrom(s) << endl;
+
+    s = "daabcbaabcbc";
+
+    cout << removeOccurrences(s, "abc") << endl;
 
     return 0;
 }
